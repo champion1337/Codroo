@@ -1,0 +1,22 @@
+<%= notice %>
+<table>
+  <tr>
+    <td>id</td>
+    <td>Name</td>
+    <td>Description</td>
+    <td>Edit</td>
+    <td>Delete</td>
+    <td>Owner</td>
+  </tr>
+<% @codroos.each do |codroo| %>
+  <tr>
+    <td><%= codroo.id %></td>
+    <td><%= link_to codroo.name, codroo_path(codroo) %></td>
+    <td><%= codroo.description %></td>
+    <td><%= link_to 'Edit', edit_codroo_path(codroo) %></td>
+    <td><%= link_to 'Destroy', codroo, :confirm => "Are you sure?", :method => :delete %></td>
+    <td><%= codroo.user.login %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'New Codroo', new_codroo_path %>

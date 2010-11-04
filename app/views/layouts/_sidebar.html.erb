@@ -1,0 +1,12 @@
+<h3><%= flash[:notice] %></h3>
+<% if current_user %>
+  Signed in as <%= current_user.login %>
+  <div><%= link_to "Your Codroos", your_codroos_path %></div>
+  <div><%= link_to "New Codroo", new_codroo_path %></div>
+  <div><%= link_to "Sign out", logout_path %></div>
+<% else %>
+  <%= render 'user_sessions/form' %>
+  <div><%= link_to "Sign in", new_user_session_path %></div>
+  <div><%= link_to "Register", register_user_path %></div>
+  
+<% end %>

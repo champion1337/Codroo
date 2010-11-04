@@ -1,0 +1,19 @@
+<%= form_for @user do |f| %>
+  <h2><%= f.error_messages %></h2>
+  <div>
+    <%= f.label "Username" %>
+    <%= f.text_field :login %>
+  </div>
+  <div>
+    <%= f.label "Password" %>
+    <%= f.password_field :password %>
+  </div>
+  <div>
+    <%= f.label "Password confirmation" %>
+    <%= f.password_field :password_confirmation %>
+  </div>
+  <div>
+    <%= f.label "Submit" %>
+    <%= f.submit %>
+  </div>
+<% end %>
