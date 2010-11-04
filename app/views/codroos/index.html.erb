@@ -1,0 +1,16 @@
+<%= notice %>
+<table>
+  <tr>
+    <td>Name</td>
+    <td>Description</td>
+    <td>Owner</td>
+  </tr>
+<% @codroos.each do |codroo| %>
+  <tr>
+    <td><%= link_to codroo.name, codroo_path(codroo) %></td>
+    <td><%= codroo.description %></td>
+    <td><%= codroo.user.login %></td>
+  </tr>
+<% end %>
+</table>
+<%= link_to 'New Codroo', new_codroo_path %>
