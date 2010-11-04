@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user: 
+  name: MyString
+  description: MyString
+  formula: MyString
+  active: false
+
+two:
+  user: 
+  name: MyString
+  description: MyString
+  formula: MyString
+  active: false

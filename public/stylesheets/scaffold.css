@@ -54,3 +54,29 @@ div.field, div.actions {
   font-size: 12px;
   list-style: square;
 }
+
+#header {
+  width:946px;
+  margin: 15px auto;
+  height:100px;
+}
+#header a {
+  width: 150px;
+  float: left;
+  text-align: center;
+}
+#wrapper {
+  width: 946px;
+  margin: auto;
+}
+#content {
+  width: 620px;
+  margin: 10px;
+  float: left;
+}
+#sidebar {
+  width: 250px;
+  float:left;
+}
+/* { border: 1px solid black; } */
+

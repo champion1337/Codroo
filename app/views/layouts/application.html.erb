@@ -7,8 +7,19 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
+<div id="header">
+  <%= link_to "Home", root_path %>
+  <%= link_to "Codroos", codroos_path %>
+</div>
 
-<%= yield %>
-
+<div id="wrapper">
+  <div id="sidebar">
+    <%= render "layouts/sidebar" %>
+  </div>
+  
+  <div id="content">
+    <%= yield %>
+  </div>
+</div>
 </body>
 </html>

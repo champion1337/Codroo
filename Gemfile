@@ -30,3 +30,4 @@ gem 'sqlite3-ruby', :require => 'sqlite3'
 # end
 gem "authlogic"
 gem "rails3-generators"
+gem "will_paginate", "~> 3.0.pre2"

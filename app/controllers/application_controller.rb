@@ -1,9 +1,28 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  
   helper_method :current_user_session, :current_user
+  before_filter :start_session
+
 
   private
+    def start_session
+      @user_session = UserSession.new
+    end
+
+    def check_codroo_owner
+      if (defined?(@current_user) &&  defined?(params[:id]))
+        if !@current_user.codroos.exists?(params[:id])
+          flash[:notice] = "You are not the owner"
+          redirect_to codroos_path
+          return false
+        end
+      else
+        flash[:notice] = "Invalid request"
+        redirect_to codroos_path
+        return false
+      end
+    end
+
     def current_user_session
       logger.debug "ApplicationController::current_user_session"
       return @current_user_session if defined?(@current_user_session)
@@ -39,10 +58,11 @@ class ApplicationController < ActionController::Base
     def store_location
      session[:return_to] = request.request_uri
     end
-    
+
     def redirect_back_or_default(default)
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
     end
-      
+
 end
+

@@ -1,9 +1,22 @@
 CodrooRor::Application.routes.draw do
-  get "user_sessions/new"
+  get "users/register"
 
+  
+
+#main
   get "home/index"
 
-  resources :user_sessions
+#users
+  resources :users
+  match "users/register" => "users#register", :as => :register_user
+#codroos
+  resources :codroos
+  get "codroos/your_codroos" 
+  match "your_codroos" => "codroos#your_codroos", :as => :your_codroos
+
+#user_sessions
+  get "user_sessions/new"
+  resources :user_sessions 
   match 'login' => "user_sessions#new", :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
   match 'account' => "user#my_account", :as => :account
