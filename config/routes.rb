@@ -1,20 +1,22 @@
 CodrooRor::Application.routes.draw do
-#
+  get "users/register"
+
+  
+
+#main
   get "home/index"
+
+#users
+  resources :users
+  match "users/register" => "users#register", :as => :register_user
+#codroos
+  resources :codroos
+  get "codroos/your_codroos" 
+  match "your_codroos" => "codroos#your_codroos", :as => :your_codroos
+
+#user_sessions
   get "user_sessions/new"
-  
-
-
-#  get "codroo/"
-  resources :codroo
-  match 'index_codroo' => "codroo#index", :as => :index_codroo
-  match 'new_codroo' => "codroo#new", :as => :new_codroo
-  match 'destroy_codroo' => "codroo#destroy", :as => :destroy_codroo
-  match 'edit_codroo/:id' => "codroo#edit", :as => :edit_codroo
-  match 'show_codroo/:id' => "codroo#show", :as => :show_codroo
-
-  
-  resources :user_sessions
+  resources :user_sessions 
   match 'login' => "user_sessions#new", :as => :login
   match 'logout' => "user_sessions#destroy", :as => :logout
   match 'account' => "user#my_account", :as => :account
