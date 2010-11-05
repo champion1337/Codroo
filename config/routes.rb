@@ -10,7 +10,9 @@ CodrooRor::Application.routes.draw do
   resources :users
   match "users/register" => "users#register", :as => :register_user
 #codroos
-  resources :codroos
+  resources :codroos do
+    resources :messages
+  end
   get "codroos/your_codroos" 
   match "your_codroos" => "codroos#your_codroos", :as => :your_codroos
 

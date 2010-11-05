@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101102105234) do
+ActiveRecord::Schema.define(:version => 20101104211601) do
 
   create_table "codroos", :force => true do |t|
     t.integer  "user_id"
@@ -18,6 +18,16 @@ ActiveRecord::Schema.define(:version => 20101102105234) do
     t.string   "description", :null => false
     t.string   "formula",     :null => false
     t.boolean  "active",      :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "messages", :force => true do |t|
+    t.string   "message",                      :null => false
+    t.integer  "codroo_id",                    :null => false
+    t.integer  "user_id",                      :null => false
+    t.integer  "message_id", :default => 0
+    t.boolean  "active",     :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
   end
