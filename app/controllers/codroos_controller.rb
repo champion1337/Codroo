@@ -1,8 +1,10 @@
 class CodroosController < ApplicationController
+  #actions that require user login
   before_filter :require_user, :only => [:new, :create, :edit, :update, :destroy]
+  #actions that require the user to be the owner
   before_filter :check_codroo_owner, :only => [:destroy,:edit,:update]
 
-  #Add new Codroo
+  #New Codroo
   def new
     @codroo = Codroo.new
     respond_to do |format|
@@ -29,6 +31,24 @@ class CodroosController < ApplicationController
     @codroo.destroy
     redirect_to(codroos_url)
   end
+  #edit a codroo - this might be useless as the object is also instantiated 
+  #when requesting the update action
+  #TODO search edit/update difference
+  def edit
+    @codroo = Codroo.find(params[:id])
+  end
+
+  #update a codroo or render the edit page
+  def update
+    @codroo = Codroo.find(params[:id])
+
+    if @codroo.update_attributes(params[:codroo])
+      redirect_to(@codroo,:notice => "Information successfully updated")
+    else
+      render :action => "edit"
+    end
+  end
+
 
   #show all codroos
   def index
@@ -42,23 +62,6 @@ class CodroosController < ApplicationController
     @codroo = Codroo.new
     @user = User.find(current_user.id)
     @codroos = @user.codroos
-  end
-
-  #edit a codroo - this might be useless
-  #TODO search edit/update difference
-  def edit
-    @codroo = Codroo.find(params[:id])
-  end
-
-  #update a codroo
-  def update
-    @codroo = Codroo.find(params[:id])
-
-    if @codroo.update_attributes(params[:codroo])
-      redirect_to(@codroo,:notice => "Information successfully updated")
-    else
-      render :action => "edit"
-    end
   end
 
   #show information about a codroo

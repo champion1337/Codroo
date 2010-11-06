@@ -6,7 +6,7 @@ class UserSessionsController < ApplicationController
   def new
   end
 
-  def create
+  def create #the user attempts login
     @user_session = UserSession.new(params[:user_session])
     if @user_session.save
       flash[:notice] = "Login Successful"
@@ -17,7 +17,7 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
-    current_user_session.destroy
+    current_user_session.destroy #the user logs out
     flash[:notice] = "Logout successful"
     redirect_back_or_default root_path
   end

@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(:version => 20101104211601) do
     t.string   "message",                      :null => false
     t.integer  "codroo_id",                    :null => false
     t.integer  "user_id",                      :null => false
-    t.integer  "message_id", :default => 0
+    t.integer  "message_id", :default => 0,    :null => false
     t.boolean  "active",     :default => true
     t.datetime "created_at"
     t.datetime "updated_at"

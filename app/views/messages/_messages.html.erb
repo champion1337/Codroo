@@ -1,0 +1,7 @@
+<div class="reply">
+  <%= messages.message %>
+  <span style="color:red">
+  <%= messages.user.login %>
+  </span>
+   <%= link_to "View Replies", codroo_message_path(@codroo,messages) %>
+</div>

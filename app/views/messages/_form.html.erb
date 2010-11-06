@@ -1,0 +1,27 @@
+<%= form_for([@codroo, @codroo.messages.build]) do |f| %>
+  <% if @codroo.errors.any? %>
+  <div id="errorsExplanation">
+    <h2><%= pluralize(@codroo.error.count, "error") %></h2>
+    <ul>
+    <%= @codroo.error.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+  <% if params[:codroo_id] != nil  %>
+    <%= hidden_field_tag(:id,params[:id]) %>
+  <% else %>
+    <%= hidden_field_tag(:id,"0") %>
+  <% end %>
+  <div class="field">
+    <%= f.label :message %>
+    <%= f.text_area :message %>
+  </div>
+  <div class="field">
+    <%= f.label :submit %>
+    <%= f.submit %>
+  </div>
+<% end %>
+
+

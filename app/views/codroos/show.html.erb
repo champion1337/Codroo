@@ -1,5 +1,5 @@
 <% notice %>
 <h1><%= @codroo.name %></h1>
 <div><%= @codroo.description %></div>
-<%= render :partial => "messages/messages",:collection => @codroo.messages %>
+<%= render :partial => "messages/messages",:collection => @codroo.messages.where("message_id = 0 ") %>
 <%= render "messages/form" %>

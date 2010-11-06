@@ -5,11 +5,12 @@ class ApplicationController < ActionController::Base
 
 
   private
-    def start_session
+    
+    def start_session #always start a session
       @user_session = UserSession.new
     end
 
-    def check_codroo_owner
+    def check_codroo_owner 
       if (defined?(@current_user) &&  defined?(params[:id]))
         if !@current_user.codroos.exists?(params[:id])
           flash[:notice] = "You are not the owner"
@@ -23,19 +24,19 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def current_user_session
+    def current_user_session #return UserSession object
       logger.debug "ApplicationController::current_user_session"
       return @current_user_session if defined?(@current_user_session)
-      @current_user_session = UserSession.find
+      @current_user_session = UserSession.find 
     end
 
-    def current_user
+    def current_user #return User object
       logger.debug "ApplicationController::current_user"
       return @current_user if defined?(@current_user)
       @current_user = current_user_session && current_user_session.user
     end
 
-    def require_user
+    def require_user #deny access if not logged in
       logger.debug "ApplicationController::require_user"
       unless current_user
         store_location
@@ -45,7 +46,7 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def require_no_user
+    def require_no_user #deny access if logged in
       logger.debug "ApplicationController::require_no_user"
       if current_user
         store_location
@@ -55,11 +56,11 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def store_location
+    def store_location #store current URI
      session[:return_to] = request.request_uri
     end
 
-    def redirect_back_or_default(default)
+    def redirect_back_or_default(default) #function for performing a redirect
       redirect_to(session[:return_to] || default)
       session[:return_to] = nil
     end

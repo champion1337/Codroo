@@ -80,3 +80,6 @@ div.field, div.actions {
 }
 /* { border: 1px solid black; } */
 
+.reply {
+  padding-left:20px;
+}

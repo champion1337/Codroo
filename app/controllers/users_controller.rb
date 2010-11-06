@@ -2,11 +2,11 @@ class UsersController < ApplicationController
   
   before_filter :require_no_user
 
-  def register
+  def register #define registration
     @user = User.new
   end
 
-  def create
+  def create #attempt registration
     @user = User.new(params[:user])
     if @user.save 
       flash[:notice] = "Registration Successful"

@@ -1,0 +1,7 @@
+<div>
+  <%= @message.message %>
+  <span style="color:red">by <%= @message.user.login %></span>
+  <%= render :partial => "messages/messages",:collection => @message.replies %>
+
+  <%= render "form" %>
+</div>
